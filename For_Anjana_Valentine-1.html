@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Anjana ❤️</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffe6e6;
+            margin: 0;
+            overflow: hidden; 
+            text-align: center;
+        }
+        .container { position: relative; z-index: 10; }
+        h1 {
+            color: #d32f2f;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .gif-container img {
+            width: 250px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 12px 24px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        #yesBtn { background-color: #ff4081; color: white; font-weight: bold; }
+        #noBtn {
+            background-color: #fff;
+            color: #ff4081;
+            font-weight: bold;
+            border: 2px solid #ff4081;
+        }
+        #success-message { display: none; flex-direction: column; align-items: center; }
+    </style>
+</head>
+<body>
+    <div id="question-screen" class="container">
+        <div class="gif-container">
+            <img src="https://media1.tenor.com/m/fA2fVjY_3cIAAAAC/cute-cat.gif">
+        </div>
+        <h1>Anjana, will you be my Valentine? 🌹</h1>
+        <div class="buttons">
+            <button class="btn" id="yesBtn" onclick="acceptLove()">Yes</button>
+            <button class="btn" id="noBtn" onclick="rejectLove()">No</button>
+        </div>
+    </div>
+
+    <div id="success-message">
+        <div class="gif-container">
+            <img src="https://media1.tenor.com/m/l5_u4J0xVzAAAAAC/mocha-bear.gif">
+        </div>
+        <h1>Yay! Love you Anjana! ❤️</h1>
+    </div>
+
+    <script>
+        let yesFontSize = 1.2;
+        let yesPadding = 12;
+        const phrases = [
+            "No","Are you sure?","Really sure?","Anjana please! 🥺",
+            "Don't do this!","I'm gonna cry...","You're breaking my heart!",
+            "Just say Yes! ❤️"
+        ];
+        let phraseIndex = 0;
+
+        function rejectLove() {
+            const yesBtn = document.getElementById('yesBtn');
+            const noBtn = document.getElementById('noBtn');
+            yesFontSize += 0.5;
+            yesPadding += 5;
+            yesBtn.style.fontSize = yesFontSize + "rem";
+            yesBtn.style.padding = yesPadding + "px " + (yesPadding * 2) + "px";
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            noBtn.innerText = phrases[phraseIndex];
+        }
+
+        function acceptLove() {
+            document.getElementById('question-screen').style.display = 'none';
+            document.getElementById('success-message').style.display = 'flex';
+            document.body.style.backgroundColor = "#ffccbc";
+        }
+    </script>
+</body>
+</html>
